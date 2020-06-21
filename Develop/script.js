@@ -5,20 +5,26 @@ let alphabetCap = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 let numbers = '0123456789'
 let specialChars = "!$%&'()*+,-./:;<=>?@[]^_`{|}~"
 let password = "";
+// Gnerate Password Function Start
 
 const generatePassword = () => {
+
+
 // get password length
 const getPasswordLength = () => {
   let passwordLength = window.prompt("How long would you like your password to be? Please choose a number between 8 and 128.");
     if(passwordLength >= 8 && passwordLength <= 128) {
+
+      //creates empty array of length of prompt window input
       passwordLength = Array.from({length:passwordLength})
+    
+    
     } else {
       window.alert("Invalid entry please choose a number between 8 and 128! ");
       getPasswordLength();
     }
     return passwordLength;
 }
-
 
 let passwordLength = getPasswordLength();
 
@@ -62,9 +68,11 @@ const getCharTypes = () => {
     getCharTypes();
   }
 
-
+//takes array of all character types and converts them to one string
   let finalPasswordChars = [charLowerCase, charUpperCase, charSpecial, charNumbers].join("")
 
+
+//return to beginning of function if no valid selection are made.
     if (!finalPasswordChars) { 
       window.alert("You must select at least one type of character for your password! Please try again!");
       getCharTypes();
@@ -80,12 +88,17 @@ const getCharTypes = () => {
 
 finalPasswordChars = getCharTypes();
 
+
+//reset password before new one is generated
   password = "";
+
+  //add character at random index in finalPasswordChars.length
   for (i=0; i<passwordLength.length; i++) {
     let c = Math.floor(Math.random() * finalPasswordChars.length);
     password += finalPasswordChars.charAt(c)
 
   }
+  //Randomized Password
   return password;
 };
 

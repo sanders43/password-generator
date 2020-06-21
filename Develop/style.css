@@ -23,6 +23,10 @@ body {
   padding-right: 20px;
 }
 
+.wrapper h2 {
+  text-align: center;
+}
+
 header {
   text-align: center;
   padding: 20px;
