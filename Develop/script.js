@@ -6,7 +6,7 @@ let numbers = '0123456789'
 let specialChars = "!$%&'()*+,-./:;<=>?@[]^_`{|}~"
 let password = "";
 
-
+const generatePassword = () => {
 // get password length
 const getPasswordLength = () => {
   let passwordLength = window.prompt("How long would you like your password to be? Please choose a number between 8 and 128.");
@@ -17,7 +17,7 @@ const getPasswordLength = () => {
       getPasswordLength();
     }
     return passwordLength;
-};
+}
 
 
 let passwordLength = getPasswordLength();
@@ -25,8 +25,9 @@ let passwordLength = getPasswordLength();
 
 // choose any or some of lowercase, uppercase, numers and special characters
 const getCharTypes = () => {
+
 // lowercase
-  let charLowerCase = window.prompt("Would you like your password to contain lowercase characters? Please choose yes or no.").toLowerCase();
+  let charLowerCase = window.prompt("Would you like your password to contain lowercase characters? Please type yes or no.").toLowerCase();
   if (charLowerCase === "yes") {charLowerCase = alphabet}
   else if (charLowerCase === "no") {charLowerCase = ""}
   else {
@@ -35,7 +36,7 @@ const getCharTypes = () => {
   } 
 
 //uppercase
-  let charUpperCase = window.prompt("Would you like your password to contain uppercase characters? Please choose yes or no.").toLowerCase();
+  let charUpperCase = window.prompt("Would you like your password to contain uppercase characters? Please type yes or no.").toLowerCase();
   if (charUpperCase === "yes") {charUpperCase = alphabetCap}
   else if (charUpperCase === "no") {charUpperCase = ""}
   else {
@@ -48,7 +49,7 @@ const getCharTypes = () => {
   if (charNumbers === 'yes') {charNumbers = numbers}
   else if (charNumbers === 'no') {charNumbers = ""}
   else {
-    window.alert("Please type yes or no!");
+    window.alert("Please choose yes or no!");
     getCharTypes();
   }
 
@@ -63,21 +64,25 @@ const getCharTypes = () => {
 
 
   let finalPasswordChars = [charLowerCase, charUpperCase, charSpecial, charNumbers].join("")
-   
+
+    if (!finalPasswordChars) { 
+      window.alert("You must select at least one type of character for your password! Please try again!");
+      getCharTypes();
+    } else { 
+      window.alert("Conditions accepted! Preparing to generate password now!")
+    
+    }
   return finalPasswordChars;
 
-
-};
+    
+}
 
 
 finalPasswordChars = getCharTypes();
 
-
-
-const generatePassword = () => {
   password = "";
   for (i=0; i<passwordLength.length; i++) {
-    let c = Math.floor(Math.random() * finalPasswordChars.length );
+    let c = Math.floor(Math.random() * finalPasswordChars.length);
     password += finalPasswordChars.charAt(c)
 
   }
