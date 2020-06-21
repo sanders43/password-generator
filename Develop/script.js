@@ -11,14 +11,17 @@ let password = "";
 const getPasswordLength = () => {
   let passwordLength = window.prompt("How long would you like your password to be? Please choose a number between 8 and 128.");
     if(passwordLength >= 8 && passwordLength <= 128) {
-      passwordLength = passwordLength
+      passwordLength = Array.from({length:passwordLength})
     } else {
       window.alert("Invalid entry please choose a number between 8 and 128! ");
       getPasswordLength();
     }
     return passwordLength;
 };
+
+
 let passwordLength = getPasswordLength();
+
 
 // choose any or some of lowercase, uppercase, numers and special characters
 const getCharTypes = () => {
@@ -68,17 +71,18 @@ const getCharTypes = () => {
 
 
 finalPasswordChars = getCharTypes();
-console.log(finalPasswordChars)
 
 
-/*const generatePassword = () => {
-  for (i=1; i<passwordLength.length; i++) {
-    let c = Math.floor(Math.random() * finalPasswordChars.length +1);
+
+const generatePassword = () => {
+  password = "";
+  for (i=0; i<passwordLength.length; i++) {
+    let c = Math.floor(Math.random() * finalPasswordChars.length );
     password += finalPasswordChars.charAt(c)
 
   }
   return password;
-};*/
+};
 
  
 
