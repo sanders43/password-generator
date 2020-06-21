@@ -1,5 +1,10 @@
 // Assignment code here
 
+// generate password function
+const generatePassword = () =>{
+  
+};
+
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
