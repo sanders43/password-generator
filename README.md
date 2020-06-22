@@ -11,6 +11,7 @@ Use javascript to develop a web app that creates a random password when given ce
 https://sanders43.github.io/password-generator/
 
 ## Screenshot
+<img src https://github.com/sanders43/password-generator/blob/master/Develop/Screenshot-finished.png />
 
 
 ## Contribution
